@@ -1,4 +1,6 @@
 ﻿
+using System.Runtime.InteropServices;
+
 namespace Abramyan_Rush
 {
     public class ScriptsPart1
@@ -351,6 +353,162 @@ namespace Abramyan_Rush
 
             return (X, Y);
         }
+        #endregion
+
+        #region Integer
+
+        private int Integer1(int length)
+            => length / 100;
+
+        private int Integer2(int mass)
+            => mass / 1000;
+
+        private int Integer3(int byteSize)
+            => byteSize / 1024;
+
+        private int Integer4(int lengthOne, int lengthTwo)
+            => lengthOne / lengthTwo;
+
+        private int Integer5(int lengthOne, int lengthTwo)
+            => lengthOne % lengthTwo;
+
+        private (int tens, int ones) Integer6(int number)
+        {
+            int tens = number / 10;
+            int ones = number % 10;
+
+            return (tens, ones);
+        }
+
+        private (int summ, int mult) Integer7(int number)
+        {
+            int tens = number / 10;
+            int ones = number % 10;
+
+            return (tens + ones, tens * ones);
+        }
+
+        private int Integer8(int number)
+        {
+            int tens = number / 10;
+            int ones = number % 10;
+
+            int newNumber = ones * 10 + tens;
+
+            return newNumber;
+        }
+
+        private int Integer9(int number)
+            => number / 100;
+
+        private (int ones, int tens) Integer10(int number)
+        {
+            int ones = number % 10;
+
+            int tens = ((number % 100) - ones) / 10;
+
+            return (ones, tens);    
+        }
+
+        private (int hundreds, int tens, int ones) GetNumberelements(int number)
+        {
+            int ones = number % 10;
+
+            int tens = ((number % 100) - ones) / 10;
+
+            int hundreds = number / 100;
+
+            return (hundreds, tens, ones);
+        }
+
+        private (int summ, int mult) Integer11(int number)
+        {
+            var numberBits = GetNumberelements(number);
+
+            int summ = numberBits.hundreds + numberBits.ones + numberBits.tens;
+            int mult = numberBits.hundreds * numberBits.ones * numberBits.tens;
+
+            return (summ, mult);
+        }
+
+        private int Integer12(int number)
+        {
+            var numberBits = GetNumberelements(number);
+
+            int newNumber = numberBits.ones * 100 + numberBits.tens * 10 + numberBits.hundreds;
+
+            return newNumber;
+        }
+
+        private int Integer13(int number)
+        {
+            int cutNumber = number / 100;
+
+            number = number % 100;
+
+            number *= 10;
+
+            number += cutNumber;
+
+            return number;
+        }
+
+        private int Integer14(int number)
+        {
+            int cutNumber = number % 10;
+
+            number = number / 10;
+
+            cutNumber *= 100;
+
+            number += cutNumber;
+
+            return number;
+        }
+
+        private int Integer15(int number)
+        {
+            var numberBits = GetNumberelements(number);
+
+            int newNumber = numberBits.ones + numberBits.hundreds * 10 + numberBits.tens * 100;
+
+            return newNumber;
+        }
+
+        private int Integer16(int number)
+        {
+            var numberBits = GetNumberelements(number);
+
+            number = numberBits.hundreds * 100 + numberBits.ones * 10 + numberBits.tens;
+
+            return number;
+        }
+
+        private int Integer17(int number)
+            => number % 1000 / 100;
+
+        private int Integer18(int number)
+            => number % 10000 / 1000;
+
+        private int Integer19(int time)
+            => time / 60;
+
+        private int Integer20(int time)
+            => time / 3600;
+
+        private int Integer21(int time)
+            => time % 60;
+
+        private int Integer22(int time)
+            => time % 3600;
+
+        private int Integer23(int time)
+        {
+            int timeLeft = time % 3600;
+
+            return timeLeft / 60;
+        }
+
         #endregion
     }
 }
