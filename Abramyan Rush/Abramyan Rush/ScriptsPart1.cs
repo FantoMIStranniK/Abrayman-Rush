@@ -1,5 +1,6 @@
 ﻿
 using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.SymbolStore;
 
 namespace Abramyan_Rush
 {
@@ -410,7 +411,7 @@ namespace Abramyan_Rush
             return (ones, tens);    
         }
 
-        private (int hundreds, int tens, int ones) GetNumberelements(int number)
+        private (int hundreds, int tens, int ones) GetNumberlements(int number)
         {
             int ones = number % 10;
 
@@ -423,7 +424,7 @@ namespace Abramyan_Rush
 
         private (int summ, int mult) Integer11(int number)
         {
-            var numberBits = GetNumberelements(number);
+            var numberBits = GetNumberlements(number);
 
             int summ = numberBits.hundreds + numberBits.ones + numberBits.tens;
             int mult = numberBits.hundreds * numberBits.ones * numberBits.tens;
@@ -433,7 +434,7 @@ namespace Abramyan_Rush
 
         private int Integer12(int number)
         {
-            var numberBits = GetNumberelements(number);
+            var numberBits = GetNumberlements(number);
 
             int newNumber = numberBits.ones * 100 + numberBits.tens * 10 + numberBits.hundreds;
 
@@ -468,7 +469,7 @@ namespace Abramyan_Rush
 
         private int Integer15(int number)
         {
-            var numberBits = GetNumberelements(number);
+            var numberBits = GetNumberlements(number);
 
             int newNumber = numberBits.ones + numberBits.hundreds * 10 + numberBits.tens * 100;
 
@@ -477,7 +478,7 @@ namespace Abramyan_Rush
 
         private int Integer16(int number)
         {
-            var numberBits = GetNumberelements(number);
+            var numberBits = GetNumberlements(number);
 
             number = numberBits.hundreds * 100 + numberBits.ones * 10 + numberBits.tens;
 
@@ -577,6 +578,213 @@ namespace Abramyan_Rush
                 return year / 100;
 
             return (year - 1) / 100 + 1;
+        }
+        #endregion
+
+        #region Boolean
+
+        private bool Boolean1(int number)
+            => number > 0;
+
+        private bool Boolean2(int number)
+            => number % 2 != 0;
+
+        private bool Boolean3(int number)
+            => number % 2 == 0;
+
+        private bool Boolean4(int numberOne, int numberTwo)
+            => numberOne > 2 && numberTwo <= 3;
+
+        private bool Boolean5(int numberOne, int numberTwo)
+            => numberOne >= 0 || numberTwo < -2;
+        
+        private bool Boolean6(int numberOne, int numberTwo, int numberThree)
+            => numberOne < numberTwo && numberTwo < numberThree;
+
+        private bool Boolean7(int numberOne, int numberTwo, int numberThree)
+            => numberOne > numberTwo && numberTwo < numberThree;
+
+        private bool Boolean8(int numberOne, int numberTwo)
+            => numberOne % 2 != 0 && numberTwo % 2 != 0;
+
+        private bool Boolean9(int numberOne, int numberTwo)
+            => numberOne % 2 != 0 || numberTwo % 2 != 0;
+
+        private bool Boolean10(int numberOne, int numberTwo)
+            => OneOfTwoNumbersIsNotOdd(numberOne, numberTwo) || OneOfTwoNumbersIsNotOdd(numberTwo, numberOne);
+        private bool OneOfTwoNumbersIsNotOdd(int numberOne, int numberTwo)
+            => numberOne % 2 != 0 && numberTwo % 2 == 0;
+
+        private bool Boolean11(int numberOne, int numberTwo)
+            => numberOne % 2 == numberTwo % 2;
+
+        private bool Boolean12(int numberOne, int numberTwo, int numberThree)
+            => numberOne > 0 && numberTwo > 0 && numberThree > 0;
+
+        private bool Boolean13(int numberOne, int numberTwo, int numberThree)
+            => numberOne > 0 || numberTwo > 0 || numberThree > 0;
+
+        private bool Boolean14(int numberOne, int numberTwo, int numberThree)
+            => Convert.ToInt32(numberOne > 0) + Convert.ToInt32(numberTwo > 0) + Convert.ToInt32(numberThree > 0) == 1;
+
+        private bool Boolean15(int numberOne, int numberTwo, int numberThree)
+            => Convert.ToInt32(numberOne > 0) + Convert.ToInt32(numberTwo > 0) + Convert.ToInt32(numberThree > 0) == 2;
+
+        private bool Boolean16(int number)
+            => number / 10 < 10 && number % 2 == 0;
+
+        private bool Boolean17(int number)
+            => number / 10 > 10 && number % 2 != 0;
+
+        private bool Boolean18(int numberOne, int numberTwo, int numberThree)
+            => numberOne == numberTwo || numberTwo == numberThree || numberOne == numberThree;
+        
+        private bool Boolean19(int numberOne, int numberTwo, int numberThree)
+            => numberOne == -numberTwo || numberTwo == -numberThree || numberOne == -numberThree;
+
+        private bool Boolean20(int number)
+        {
+            (int ones, int tens, int hundreds) numberBits = GetNumberlements(number);
+
+            return numberBits.ones != numberBits.tens && 
+                numberBits.ones != numberBits.hundreds && 
+                numberBits.hundreds != numberBits.tens;
+        }
+
+        private bool IsUprising(List<int> numbers)
+        {
+            int previousNumber = int.MinValue;
+
+            foreach(var number in numbers)
+            {
+                if(number <= previousNumber)
+                    return false;
+                else
+                    previousNumber = number;
+            }
+
+            return true;
+        }
+
+        private bool Boolean21(int number)
+        {
+            (int hundreds, int tens, int ones) numberBits = GetNumberlements(number);
+
+            return IsUprising(new List<int>() { numberBits.hundreds, numberBits.tens, numberBits.ones });
+        }
+
+        private bool Boolean22(int number)
+        {
+            (int hundreds, int tens, int ones) numberBits = GetNumberlements(number);
+
+            return IsUprising(new List<int>() { numberBits.hundreds, numberBits.tens, numberBits.ones }) || IsUprising(new List<int>() { numberBits.ones, numberBits.tens, numberBits.hundreds });
+        }
+
+        private bool Boolean23(int number)
+        {
+            int thousands = number / 1000;
+
+            int hundreds = (number / 100) - thousands * 10;
+
+            int tens = (number / 10) - (thousands * 100 + hundreds * 10);
+
+            int ones = number % 10;
+
+            return thousands == ones && hundreds == tens;
+        }
+
+        private bool Boolean24(int numberOne, int numberTwo, int numberThree)
+        {
+            int discriminant = numberThree * numberTwo - 4 * numberOne * numberThree;
+
+            return discriminant >= 0;
+        }
+
+        private bool Boolena25((int x, int y) cords)
+            => cords.x < 0 && cords.y > 0;
+
+        private bool Boolean26((int x, int y) cords)
+            => cords.x > 0 && cords.y < 0;
+
+        private bool Boolean27((int x, int y) cords)
+            => cords.x < 0 && cords.y != 0;
+
+        private bool Boolean28((int x, int y) cords)
+            => (cords.x / MathF.Abs(cords.x)) == (cords.y / MathF.Abs(cords.y));
+
+        private bool Boolean29((int x, int y) cords, (int x, int y) leftTopCord, (int x, int y) rightLowerCord)
+            => cords.x > leftTopCord.x && cords.x < rightLowerCord.x && cords.y < leftTopCord.y && cords.y > rightLowerCord.y;
+
+        private bool Boolean30(int sideOne, int sideTwo, int sideThree)
+            => sideOne == sideTwo && sideTwo == sideThree && sideOne == sideThree;
+
+        private bool Boolean31(int sideOne, int sideTwo, int sideThree)
+            => SidesAreEqual(sideOne, sideTwo, sideThree) || SidesAreEqual(sideThree, sideOne, sideTwo) || SidesAreEqual(sideTwo, sideThree, sideOne);
+
+        private bool SidesAreEqual(int equalSideOne, int equalSideTwo, int baseSide)
+            => equalSideOne == equalSideTwo && equalSideOne != baseSide && equalSideTwo != baseSide;
+
+        private bool Boolean32(int sideOne, int sideTwo, int sideThree)
+            => IsHypotynuse(sideOne, sideTwo, sideThree) || IsHypotynuse(sideThree, sideOne, sideTwo) || IsHypotynuse(sideTwo, sideThree, sideOne);
+
+        private bool IsHypotynuse(int sideOne, int sideTwo, int hypotynuse)
+            => hypotynuse * hypotynuse == sideOne * sideOne + sideTwo * sideTwo;
+
+        private bool Boolean33(int sideOne, int sideTwo, int sideThree)
+            => TriangleCanExist(sideOne, sideTwo, sideThree) || TriangleCanExist(sideThree, sideOne, sideTwo) || TriangleCanExist(sideTwo, sideThree, sideOne);
+        private bool TriangleCanExist(int sideOne, int sideTwo, int sideThree)
+            => sideThree < sideOne + sideTwo;
+
+        private bool Boolean34((int x, int y) cords)
+            => (cords.x + cords.y) % 2 != 0;
+
+        private bool Boolean35((int x, int y) cordsOne, (int x, int y) cordsTwo)
+            => Boolean34(cordsOne) == Boolean34(cordsTwo);
+
+        private bool Boolean36((int x, int y) cordsOne, (int x, int y) cordsTwo)
+        {
+            if (cordsOne == cordsTwo)
+                return false;
+
+            bool canGoUp = (cordsOne.x == cordsTwo.x) && (cordsOne.y != cordsTwo.y);
+            bool canGoSideways = (cordsOne.y == cordsTwo.y) && (cordsOne.x != cordsTwo.y);
+
+            return canGoSideways || canGoUp;
+        }
+
+        private bool Boolean37((int x, int y) cordsOne, (int x, int y) cordsTwo)
+        {
+            if (cordsOne == cordsTwo)
+                return false;
+
+            bool canGoToX = MathF.Abs(cordsOne.x - cordsTwo.x) <= 1;
+            bool canGoToY = MathF.Abs(cordsOne.y - cordsTwo.y) <= 1;
+
+            return canGoToX && canGoToY;
+        }
+
+        private bool Boolean38((int x, int y) cordsOne, (int x, int y) cordsTwo)
+        {
+            if (cordsOne == cordsTwo)
+                return false;
+
+            bool canGo = MathF.Abs(cordsOne.x - cordsTwo.x) == MathF.Abs(cordsOne.y - cordsTwo.y);
+
+            return canGo;
+        }
+
+        private bool Boolean39((int x, int y) cordsOne, (int x, int y) cordsTwo)
+            => Boolean36(cordsOne, cordsTwo) || Boolean38(cordsOne, cordsTwo);
+
+        private bool Boolean40((int x, int y) cordsOne, (int x, int y) cordsTwo)
+        {
+            if (cordsOne == cordsTwo)
+                return false;
+
+            bool canGoSide = MathF.Abs(cordsOne.x - cordsTwo.x) == 1 && MathF.Abs(cordsOne.y - cordsTwo.y) == 2;
+            bool canGoUp = MathF.Abs(cordsOne.y - cordsTwo.y) == 1 && MathF.Abs(cordsOne.x - cordsTwo.x) == 2;
+
+            return canGoSide && canGoUp;
         }
         #endregion
     }
