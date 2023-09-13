@@ -1,5 +1,5 @@
 ﻿
-using System.Runtime.InteropServices;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Abramyan_Rush
 {
@@ -509,6 +509,75 @@ namespace Abramyan_Rush
             return timeLeft / 60;
         }
 
+        private int Integer24(int day)
+            => day % 7;
+
+        private int Integer25(int day)
+        {
+            day = day % 7;
+
+            int startDay = 3;
+
+            if (day >= 4)
+                startDay = 0;
+
+            return day + startDay;
+        }
+
+        private int Integer26(int day)
+        {
+            day = day % 7;
+
+            int startDay = 2;
+
+            if(day >= 5)
+                startDay = 0;
+
+            return day + startDay;
+        }
+
+        private int Integer27(int day)
+        {
+            day = day % 7;
+
+            int startDay = 6;
+
+            if (day >= 1)
+                startDay = 0;
+
+            return day + startDay;
+        }
+
+        private int Integer28(int day, int startDayIndex)
+        {
+            day = day % 7;
+
+            if (day >= 7 - startDayIndex)
+                startDayIndex = 0;
+
+            return day + startDayIndex;
+        }
+
+        private (int countOfSquares, float freeSquare) Integer29(int sideA, int sideB, int sideC)
+        {
+            int rectangleSquare = sideA * sideB;
+
+            int quadrateSquare = sideC * sideC;
+
+            int countOfSquares = rectangleSquare / quadrateSquare;
+
+            float freeSquare = rectangleSquare % quadrateSquare;
+
+            return (countOfSquares, freeSquare);
+        }
+
+        private int Integer30(int year)
+        {
+            if (year % 100 == 0)
+                return year / 100;
+
+            return (year - 1) / 100 + 1;
+        }
         #endregion
     }
 }
