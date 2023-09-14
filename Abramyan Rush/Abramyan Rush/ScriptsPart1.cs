@@ -1,6 +1,6 @@
 ﻿
+using System.ComponentModel.Design;
 using System.Diagnostics.CodeAnalysis;
-using System.Diagnostics.SymbolStore;
 
 namespace Abramyan_Rush
 {
@@ -8,7 +8,7 @@ namespace Abramyan_Rush
     {
         public void RunTest()
         {
-
+            Console.WriteLine(If30(1));
         }
 
         #region Begin
@@ -602,7 +602,7 @@ namespace Abramyan_Rush
             => numberOne < numberTwo && numberTwo < numberThree;
 
         private bool Boolean7(int numberOne, int numberTwo, int numberThree)
-            => numberOne > numberTwo && numberTwo < numberThree;
+            => Boolean6(numberOne, numberTwo, numberThree) || Boolean6(numberThree, numberTwo, numberOne);
 
         private bool Boolean8(int numberOne, int numberTwo)
             => numberOne % 2 != 0 && numberTwo % 2 != 0;
@@ -786,6 +786,372 @@ namespace Abramyan_Rush
 
             return canGoSide && canGoUp;
         }
+        #endregion
+
+        #region If
+
+        private int If1(int number)
+            => number > 0 ? number + 1 : number;
+
+        private int If2(int number)
+            => number > 0 ? number + 1 : number - 2;
+
+        private int If3(int number)
+        {
+            if (number > 0)
+                number += 1;
+            else if (number < 0)
+                number -= 2;
+            else
+                number = 10;
+
+            return number;
+        }
+
+        private int If4(int numberOne, int numberTwo, int numberThree)
+        {
+            List<int> numbers = new() { numberOne, numberTwo, numberThree };
+
+            int countOfPositiveNumbers = 0;
+
+            foreach (var number in numbers)
+            {
+                if (number > 0)
+                    countOfPositiveNumbers++;
+            }
+
+            return countOfPositiveNumbers;
+        }
+
+        private (int positiveNumbers, int negativeNumbers) If5(int numberOne, int numberTwo, int numberThree)
+        {
+            List<int> numbers = new() { numberOne, numberTwo, numberThree };
+
+            int countOfPositiveNumbers = 0;
+            int countOfNegativeNumbers = 0;
+
+            foreach (var number in numbers)
+            {
+                if (number > 0)
+                    countOfPositiveNumbers++;
+                else if (number < 0)
+                    countOfNegativeNumbers++;
+            }
+
+            return (countOfPositiveNumbers, countOfNegativeNumbers);
+        }
+
+        private int If6(int numberOne, int numberTwo)
+            => numberOne > numberTwo ? numberOne : numberTwo;
+
+        private int If7(int numberOne, int numberTwo)
+            => numberOne < numberTwo ? 1 : 2;
+
+        private (int biggest, int smallest) If8(int numberOne, int numberTwo)
+        {
+            if (numberOne > numberTwo)
+                return (numberOne, numberTwo);
+            else
+                return (numberTwo, numberOne);
+        }
+
+        private (float smallest, float biggest) If9(float numberOne, float numberTwo)
+        {
+            if (numberOne > numberTwo)
+            {
+                float temp = numberOne;
+
+                numberOne = numberTwo;
+
+                numberTwo = temp;
+            }
+
+            return (numberOne, numberTwo);
+        }
+
+        private (float first, float second) If10(float numberOne, float numberTwo)
+        {
+            if(numberOne == numberTwo)
+            {
+                numberOne = 0;
+                numberTwo = 0;
+            }
+            else
+            {
+                float summ = numberOne + numberTwo;
+
+                numberOne = summ; 
+                numberTwo = summ;
+            }
+
+            return (numberOne, numberTwo);
+        }
+
+        private (float first, float second) If11(float numberOne, float numberTwo)
+        {
+            if (numberOne == numberTwo)
+            {
+                var sortedNumbers = If9(numberOne, numberTwo);
+
+                numberOne = sortedNumbers.biggest;
+                numberTwo = sortedNumbers.biggest;
+            }
+            else
+            {
+                float summ = numberOne + numberTwo;
+
+                numberOne = summ;
+                numberTwo = summ;
+            }
+
+            return (numberOne, numberTwo);
+        }
+
+        private float If12(int numberOne, int numberTwo, int numberThree)
+        {
+            float minValue = float.MaxValue;
+
+            List<float> numbers = new() {numberOne, numberTwo, numberThree};
+
+            foreach(var number in numbers)
+                if(number < minValue)
+                    minValue = number;
+
+            return minValue;
+        }
+
+        private float If13(int numberOne, int numberTwo, int numberThree)
+        {
+            float minValue = If12(numberOne, numberTwo, numberThree);
+
+            float maxValue = float.MinValue;
+
+            List<float> numbers = new() { numberOne, numberTwo, numberThree };
+
+            foreach (var number in numbers)
+                if (number > maxValue)
+                    maxValue = number;
+
+            return numberOne + numberTwo + numberThree - minValue - maxValue;
+        }
+
+        private (float smallest, float biggest) If14(int numberOne, int numberTwo, int numberThree)
+        {
+            float minValue = If12(numberOne, numberTwo, numberThree);
+            
+            float mediumValue = If13(numberOne, numberTwo, numberThree);
+
+            float maxValue = numberOne + numberTwo + numberThree - minValue - mediumValue;
+
+            return (minValue, maxValue);
+        }
+
+        private float If15(int numberOne, int numberTwo, int numberThree)
+        {
+            if (numberOne <= numberTwo && numberOne <= numberThree)
+                return numberTwo + numberThree;
+            else if (numberTwo <= numberOne && numberTwo <= numberThree)
+                return numberTwo + numberOne;
+            else
+                return numberOne + numberThree;
+        }
+
+        private (float numberOne, float numberTwo, float numberThree) If16(int numberOne, int numberTwo, int numberThree)
+        {
+            List<float> numbers = new() { numberOne, numberTwo, numberThree };
+
+            float previousNumber = float.MinValue;
+
+            foreach(var number in numbers)
+            {
+                if (number >= previousNumber)
+                    continue;
+
+                return (-numberOne, -numberTwo, -numberThree);
+            }
+
+            return (numberOne * 2, numberTwo * 2, numberThree * 2);
+        }
+
+        private (float numberOne, float numberTwo, float numberThree) If17(int numberOne, int numberTwo, int numberThree)
+        {
+            if((numberOne <= numberTwo && numberTwo <= numberThree) ||(numberOne >= numberTwo && numberTwo >= numberThree))
+                return (numberOne * 2, numberTwo * 2, numberThree * 2);
+            else
+                return (-numberOne, -numberTwo, -numberThree);
+        }
+
+        private int If18(int numberOne, int numberTwo, int numberThree)
+        {
+            if (numberOne == numberTwo)
+                return 2;
+            else if (numberOne == numberThree)
+                return 1;
+            else
+                return 0;
+        }
+
+        private int If19(int numberOne, int numberTwo, int numberThree, int numberFour)
+        {
+            if (numberOne == numberTwo && numberOne == numberThree)
+                return numberFour;
+            else if (numberTwo == numberThree && numberTwo == numberFour)
+                return numberOne;
+            else if (numberThree == numberFour && numberThree == numberOne)
+                return numberTwo;
+
+            return numberThree;
+        }
+
+        private (char pointName, float distance) If20((float x, float y) pointA, (float x, float y) pointB, (float x, float y) pointC)
+        {
+            float distanceAB = MathF.Sqrt((pointA.x - pointB.x) * (pointA.x - pointB.x) + (pointA.y - pointB.y) * (pointA.y - pointB.y));
+
+            float distanceAC = MathF.Sqrt((pointA.x - pointC.x) * (pointA.x - pointC.x) + (pointA.y - pointC.y) * (pointA.y - pointC.y));
+
+            return distanceAB > distanceAC ? ('C', distanceAC) : ('B', distanceAB); 
+        }
+
+        private int If21((float x, float y) point)
+        {
+            if (point.x == 0 && point.y == 0)
+                return 0;
+
+            if (point.x == 0 && point.y != 0)
+                return 2;
+
+            if (point.x != 0 && point.y == 0)
+                return 1;
+
+            return 3;
+        }
+
+        private int If22((float x, float y) point)
+        {
+            if (point.x > 0 && point.y > 0)
+                return 1;
+
+            if (point.x < 0 && point.y > 0)
+                return 2;
+
+            if (point.x < 0 && point.y < 0)
+                return 3;
+
+            if (point.x > 0 && point.y < 0)
+                return 4;
+
+            return 0;
+        }
+
+        private (float x, float y) If23((float x, float y) pointOne, (float x, float y) pointTwo, (float x, float y) pointThree)
+        {
+            float y = 0;
+
+            if (pointOne.y == pointTwo.y)
+                y = pointThree.y;
+            else if (pointOne.y == pointThree.y) 
+                y = pointTwo.y;
+
+            float x = 0;
+
+            if (pointOne.x == pointTwo.x)
+                x = pointThree.x;
+            else if (pointOne.x == pointThree.x)
+                x = pointTwo.x;
+
+            return (x, y);
+        }
+
+        private float If24(float X)
+        {
+            if (X > 0)
+                return 2f * MathF.Sin(X);
+
+            return 6f - X;
+        }
+
+        private int If25(int X)
+        {
+            if (X < -2 || X > 2)
+                return 2 * X;
+
+            return -3 * X;
+        }
+
+        private float If26(float X)
+        {
+            if (X <= 0)
+                return -X;
+
+            if (X >= 2)
+                return 4;
+
+            return X * X;
+        }
+
+        private int If27(float X)
+        {
+            if (X < 0)
+                return 0;
+
+            X = MathF.Floor(X);
+
+            if (X % 2 == 0)
+                return 1;
+
+            return -1;
+        }
+
+        private int If28(int year)
+        {
+            bool canBeDividedByFour = year % 4 == 0;
+            bool cantBeDividedByHundred = year % 100 != 0;
+            bool canBeDividedByFourHundred = year % 400 == 0;
+
+            if (canBeDividedByFour && (cantBeDividedByHundred || canBeDividedByFourHundred))
+                return 366;
+            else
+                return 365;
+        }
+
+        private string If29(int number)
+        {
+            if (number == 0)
+                return "нулевое число";
+
+            string result = "";
+
+            if (number % 2 == 0)
+                result += "четное";
+            else
+                result += "нечетное";
+
+            if (number > 0)
+                result += " положительное";
+            else
+                result += " отрицательное";
+
+            return result + " число";
+        }
+        private string If30(int number)
+        {
+            string result = "";
+
+            if (number % 2 == 0)
+                result += "четное";
+            else
+                result += "нечетное";
+
+            if (number / 100 > 0)
+                result += " трехзначное";
+            else if (number / 10 > 0)
+                result += " двузначное";
+            else
+                result += " однозначное";
+
+            return result + " число";
+        }
+
         #endregion
     }
 }
