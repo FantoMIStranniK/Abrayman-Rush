@@ -1,14 +1,11 @@
 ﻿
-using System.ComponentModel.Design;
-using System.Diagnostics.CodeAnalysis;
-
 namespace Abramyan_Rush
 {
     public class ScriptsPart1
     {
         public void RunTest()
         {
-            Console.WriteLine(If30(1));
+
         }
 
         #region Begin
@@ -408,7 +405,7 @@ namespace Abramyan_Rush
 
             int tens = ((number % 100) - ones) / 10;
 
-            return (ones, tens);    
+            return (ones, tens);
         }
 
         private (int hundreds, int tens, int ones) GetNumberlements(int number)
@@ -531,7 +528,7 @@ namespace Abramyan_Rush
 
             int startDay = 2;
 
-            if(day >= 5)
+            if (day >= 5)
                 startDay = 0;
 
             return day + startDay;
@@ -597,7 +594,7 @@ namespace Abramyan_Rush
 
         private bool Boolean5(int numberOne, int numberTwo)
             => numberOne >= 0 || numberTwo < -2;
-        
+
         private bool Boolean6(int numberOne, int numberTwo, int numberThree)
             => numberOne < numberTwo && numberTwo < numberThree;
 
@@ -638,7 +635,7 @@ namespace Abramyan_Rush
 
         private bool Boolean18(int numberOne, int numberTwo, int numberThree)
             => numberOne == numberTwo || numberTwo == numberThree || numberOne == numberThree;
-        
+
         private bool Boolean19(int numberOne, int numberTwo, int numberThree)
             => numberOne == -numberTwo || numberTwo == -numberThree || numberOne == -numberThree;
 
@@ -646,8 +643,8 @@ namespace Abramyan_Rush
         {
             (int ones, int tens, int hundreds) numberBits = GetNumberlements(number);
 
-            return numberBits.ones != numberBits.tens && 
-                numberBits.ones != numberBits.hundreds && 
+            return numberBits.ones != numberBits.tens &&
+                numberBits.ones != numberBits.hundreds &&
                 numberBits.hundreds != numberBits.tens;
         }
 
@@ -655,9 +652,9 @@ namespace Abramyan_Rush
         {
             int previousNumber = int.MinValue;
 
-            foreach(var number in numbers)
+            foreach (var number in numbers)
             {
-                if(number <= previousNumber)
+                if (number <= previousNumber)
                     return false;
                 else
                     previousNumber = number;
@@ -871,7 +868,7 @@ namespace Abramyan_Rush
 
         private (float first, float second) If10(float numberOne, float numberTwo)
         {
-            if(numberOne == numberTwo)
+            if (numberOne == numberTwo)
             {
                 numberOne = 0;
                 numberTwo = 0;
@@ -880,7 +877,7 @@ namespace Abramyan_Rush
             {
                 float summ = numberOne + numberTwo;
 
-                numberOne = summ; 
+                numberOne = summ;
                 numberTwo = summ;
             }
 
@@ -911,10 +908,10 @@ namespace Abramyan_Rush
         {
             float minValue = float.MaxValue;
 
-            List<float> numbers = new() {numberOne, numberTwo, numberThree};
+            List<float> numbers = new() { numberOne, numberTwo, numberThree };
 
-            foreach(var number in numbers)
-                if(number < minValue)
+            foreach (var number in numbers)
+                if (number < minValue)
                     minValue = number;
 
             return minValue;
@@ -938,7 +935,7 @@ namespace Abramyan_Rush
         private (float smallest, float biggest) If14(int numberOne, int numberTwo, int numberThree)
         {
             float minValue = If12(numberOne, numberTwo, numberThree);
-            
+
             float mediumValue = If13(numberOne, numberTwo, numberThree);
 
             float maxValue = numberOne + numberTwo + numberThree - minValue - mediumValue;
@@ -962,7 +959,7 @@ namespace Abramyan_Rush
 
             float previousNumber = float.MinValue;
 
-            foreach(var number in numbers)
+            foreach (var number in numbers)
             {
                 if (number >= previousNumber)
                     continue;
@@ -975,7 +972,7 @@ namespace Abramyan_Rush
 
         private (float numberOne, float numberTwo, float numberThree) If17(int numberOne, int numberTwo, int numberThree)
         {
-            if((numberOne <= numberTwo && numberTwo <= numberThree) ||(numberOne >= numberTwo && numberTwo >= numberThree))
+            if ((numberOne <= numberTwo && numberTwo <= numberThree) || (numberOne >= numberTwo && numberTwo >= numberThree))
                 return (numberOne * 2, numberTwo * 2, numberThree * 2);
             else
                 return (-numberOne, -numberTwo, -numberThree);
@@ -1009,7 +1006,7 @@ namespace Abramyan_Rush
 
             float distanceAC = MathF.Sqrt((pointA.x - pointC.x) * (pointA.x - pointC.x) + (pointA.y - pointC.y) * (pointA.y - pointC.y));
 
-            return distanceAB > distanceAC ? ('C', distanceAC) : ('B', distanceAB); 
+            return distanceAB > distanceAC ? ('C', distanceAC) : ('B', distanceAB);
         }
 
         private int If21((float x, float y) point)
@@ -1049,7 +1046,7 @@ namespace Abramyan_Rush
 
             if (pointOne.y == pointTwo.y)
                 y = pointThree.y;
-            else if (pointOne.y == pointThree.y) 
+            else if (pointOne.y == pointThree.y)
                 y = pointTwo.y;
 
             float x = 0;
@@ -1152,6 +1149,708 @@ namespace Abramyan_Rush
             return result + " число";
         }
 
+        #endregion
+
+        #region Case
+
+        private string Case1(int dayNumber)
+        {
+            string result = dayNumber switch
+            {
+                1 => "понедельник",
+                2 => "вторник",
+                3 => "середа",
+                4 => "четверг",
+                5 => "пятница",
+                6 => "суббота",
+                7 => "воскресенье",
+                _ => "ошибка"
+            };
+
+            return result;
+        }
+
+        private string Case2(int mark)
+        {
+            string result = mark switch
+            {
+                1 => "плохо",
+                2 => "неудовлетворительно",
+                3 => "удовлетворительно",
+                4 => "хорошо",
+                5 => "отлично",
+                _ => "ошибка"
+            };
+
+            return result;
+        }
+
+        private string Case3(int monthNumber)
+        {
+            string month = monthNumber switch
+            {
+                1 or 2 or 12 => "зима",
+                3 or 4 or 5 => "весна",
+                6 or 7 or 8 => "лето",
+                9 or 10 or 11 => "осень",
+            };
+
+            return month;
+        }
+
+        private int Case4(int monthNumber)
+        {
+            int countOfDays = monthNumber switch
+            {
+                1 or 3 or 5 or 6 or 7 or 8 or 10 or 12 => 31,
+                4 or 6 or 9 or 11 => 30,
+                2 => 28
+            };
+
+            return countOfDays;
+        }
+
+        private float Case5(int operationIndex, float numberOne, float numberTwo)
+        {
+            float result = operationIndex switch
+            {
+                1 => numberOne + numberTwo,
+                2 => numberOne - numberTwo,
+                3 => numberOne * numberTwo,
+                4 => numberOne / numberTwo,
+            };
+
+            return result;
+        }
+
+        private float Case6(int lengthMeasureIndex, float length)
+        {
+            float lengthModifier = lengthMeasureIndex switch
+            {
+                1 => 0.1f,
+                2 => 10f,
+                3 => 1f,
+                4 => 0.001f,
+                5 => 0.01f
+            };
+
+            return lengthModifier * length;
+        }
+
+        private float Case7(int weightMeasureIndex, float weight)
+        {
+            float weightModifier = weightMeasureIndex switch
+            {
+                1 => 1f,
+                2 => 0.000001f,
+                3 => 0.001f,
+                4 => 1000f,
+                5 => 100f
+            };
+
+            return weightModifier * weight;
+        }
+
+        private (int dayNumber, int monthNumber) Case8(int dayNumber, int monthNumber)
+        {
+            dayNumber++;
+
+            int dayLimit = monthNumber switch
+            {
+                1 or 3 or 5 or 6 or 7 or 8 or 10 or 12 => 31,
+                4 or 6 or 9 or 11 => 30,
+                2 => 28
+            };
+
+            if (dayNumber > dayLimit)
+            {
+                dayNumber = 1;
+                monthNumber++;
+            }
+
+            if (monthNumber > 12)
+                monthNumber = 1;
+
+            return (dayNumber, monthNumber);
+        }
+
+        private (int dayNumber, int monthNumber) Case9(int dayNumber, int monthNumber)
+        {
+            dayNumber--;
+
+            if (dayNumber > 0)
+                return (dayNumber, monthNumber);
+
+            monthNumber--;
+
+            if (monthNumber <= 0)
+                monthNumber = 12;
+
+            dayNumber = monthNumber switch
+            {
+                1 or 3 or 5 or 6 or 7 or 8 or 10 or 12 => 31,
+                4 or 6 or 9 or 11 => 30,
+                2 => 28
+            };
+
+            return (dayNumber, monthNumber);
+        }
+
+        private char Case10(char direction, int command)
+        {
+            int directionIndex = DecodeDirection(direction);
+
+            directionIndex += command;
+
+            if (directionIndex > 4)
+                directionIndex = 1;
+            else if (directionIndex < 0)
+                directionIndex = 4;
+
+            return EncodeDirection(directionIndex);
+        }
+
+        private int DecodeDirection(char direction)
+        {
+            int directionIndex = direction switch
+            {
+                'W' => 4,
+                'N' => 3,
+                'E' => 2,
+                'S' => 1
+            };
+
+            return directionIndex;
+        }
+
+        private char EncodeDirection(int directionIndex)
+        {
+            char direction = directionIndex switch
+            {
+                4 => 'W',
+                3 => 'N',
+                2 => 'E',
+                1 => 'S'
+            };
+
+            return direction;
+        }
+
+        private char Case11(char direction, List<int> commands)
+        {
+            int directionIndex = DecodeDirection(direction);
+
+            foreach (var command in commands)
+            {
+                directionIndex += command;
+
+                if (directionIndex > 4)
+                    directionIndex -= 4;
+                else if (directionIndex <= 0)
+                    directionIndex = 1;
+            }
+
+            return EncodeDirection(directionIndex);
+        }
+
+        private (float element1, float element2, float element3) Case12(int elementIndex, float knownElement)
+        {
+            (float element1, float element2, float element3) elementsToFind = new();
+
+            switch (elementIndex)
+            {
+                case 1:
+                    elementsToFind = GetElementsByRadius(knownElement);
+                    break;
+                case 2:
+                    elementsToFind = GetElementsByDiameter(knownElement);
+                    break;
+                case 3:
+                    elementsToFind = GetElementsByLength(knownElement);
+                    break;
+                case 4:
+                    elementsToFind = GetElementsBySquare(knownElement);
+                    break;
+            }
+
+            return elementsToFind;
+        }
+
+        private (float element1, float element2, float element3) GetElementsByRadius(float radius)
+        {
+            float diameter = 2f * radius;
+            float length = 2f * MathF.PI * radius;
+            float square = MathF.PI * radius * radius;
+
+            return (diameter, length, square);
+        }
+
+        private (float element1, float element2, float element3) GetElementsByDiameter(float diameter)
+        {
+            float radius = diameter / 2f;
+
+            (float element1, float element2, float element3) elements = GetElementsByRadius(radius);
+
+            elements.element1 = radius;
+
+            return elements;
+        }
+
+        private (float element1, float element2, float element3) GetElementsByLength(float length)
+        {
+            float radius = length / 2f * MathF.PI;
+
+            (float element1, float element2, float element3) elements = GetElementsByRadius(radius);
+
+            elements.element2 = elements.element1;
+
+            elements.element1 = radius;
+
+            return elements;
+        }
+
+        private (float element1, float element2, float element3) GetElementsBySquare(float square)
+        {
+            float radius = MathF.Sqrt(square / MathF.PI);
+
+            (float element1, float element2, float element3) elements = GetElementsByRadius(radius);
+
+            elements.element3 = elements.element2;
+
+            elements.element2 = elements.element1;
+
+            elements.element1 = radius;
+
+            return elements;
+        }
+
+        private (float element1, float element2) Case13(int elementIndex, float knownElement)
+        {
+            (float element1, float element2) elementsToFind = new();
+
+            switch (elementIndex)
+            {
+                case 1:
+                    elementsToFind = FindElementsByCathetus(knownElement);
+                    break;
+                case 2:
+                    elementsToFind = FindElementsByHypotenuse(knownElement);
+                    break;
+                case 3:
+                    elementsToFind = FindElementsByHeight(knownElement);
+                    break;
+            }
+
+            return elementsToFind;
+        }
+
+        private (float element1, float element2) FindElementsByCathetus(float side)
+        {
+            float hypotenuse = side * MathF.Sqrt(2f);
+
+            float height = hypotenuse / 2f;
+
+            return (hypotenuse, height);
+        }
+
+        private (float element1, float element2) FindElementsByHypotenuse(float hypotenuse)
+        {
+            float side = hypotenuse / MathF.Sqrt(2f);
+
+            float height = hypotenuse / 2f;
+
+            return (side, height);
+        }
+
+        private (float element1, float element2) FindElementsByHeight(float height)
+        {
+            float hypotenuse = height * 2f;
+
+            float side = hypotenuse / MathF.Sqrt(2f);
+
+            return (side, hypotenuse);
+        }
+
+        private (float element1, float element2, float element3) Case14(int elementIndex, float knownElement)
+        {
+            (float element1, float element2, float element3) elementsToFind = new();
+
+            switch (elementIndex)
+            {
+                case 1:
+                    elementsToFind = FindElementsBySide(knownElement);
+                    break;
+                case 2:
+                    elementsToFind = FindElementsByFirstRadius(knownElement);
+                    break;
+                case 3:
+                    elementsToFind = FindElementsBySecondRadius(knownElement);
+                    break;
+                case 4:
+                    elementsToFind = FindElementsBySquare(knownElement);
+                    break;
+            }
+
+            return elementsToFind;
+        }
+
+        private (float element1, float element2, float element3) FindElementsBySide(float side)
+        {
+            float radiusOne = side * MathF.Sqrt(3f) / 6f;
+
+            float radiusTwo = radiusOne * 2f;
+
+            float square = side * side * MathF.Sqrt(3f) / 4f;
+
+            return (radiusOne, radiusTwo, square);
+        }
+
+        private (float element1, float element2, float element3) FindElementsByFirstRadius(float firstRadius)
+        {
+            float side = (firstRadius * 6) / MathF.Sqrt(3f);
+
+            float secondRadius = firstRadius * 2f;
+
+            float square = side * side * MathF.Sqrt(3f) / 4f;
+
+            return (side, secondRadius, square);
+        }
+
+        private (float element1, float element2, float element3) FindElementsBySecondRadius(float secondRadius)
+        {
+            float firstRadius = secondRadius / 2f;
+
+            float side = (firstRadius * 6) / MathF.Sqrt(3f);
+
+            float square = side * side * MathF.Sqrt(3f) / 4f;
+
+            return (side, secondRadius, square);
+        }
+
+        private (float element1, float element2, float element3) FindElementsBySquare(float square)
+        {
+            float side = MathF.Sqrt((4f * square) / MathF.Sqrt(3f));
+
+            float firstRadius = side * MathF.Sqrt(3f) / 6f;
+
+            float secondRadius = firstRadius * 2f;
+
+            return (side, firstRadius, secondRadius);
+        }
+
+        private (string name, string cardClass) Case15(int cardNumber, int cardClassNumber)
+        {
+            string cardClass = cardClassNumber switch
+            {
+                1 => "пик ",
+                2 => "треф ",
+                3 => "бубен ",
+                4 => "червей ",
+            };
+
+            string name = cardNumber switch
+            {
+                6 => "шестерка",
+                7 => "семерка",
+                8 => "восьмерка",
+                9 => "девятка",
+                10 => "десятка",
+                11 => "валет",
+                12 => "дама",
+                13 => "король",
+                14 => "туз"
+            };
+
+            return (cardClass, name);
+        }
+
+        private string Case16(int age)
+        {
+            int lastAgeNumber = age % 10;
+
+            int firstAgeNumber = age / 10;
+
+            string ageName = lastAgeNumber switch
+            {
+                0 or 5 or 6 or 7 or 8 or 9 => " лет",
+                1 => " год",
+                2 or 3 or 4 => " года"
+            };
+
+            string lastNumberName = lastAgeNumber switch
+            {
+                1 => " один",
+                2 => " два",
+                3 => " три",
+                4 => " четыре",
+                5 => " пять",
+                6 => " шесть",
+                7 => " семь",
+                8 => " восемь",
+                9 => " девять",
+                0 => ""
+            };
+
+            string firstNumberName = firstAgeNumber switch
+            {
+                2 => "двадцать",
+                3 => "тридцать",
+                4 => "сорок",
+                5 => "пятьдесят",
+                6 => "шестьдесят"
+            };
+
+            return firstNumberName + lastNumberName + ageName;
+        }
+
+        private string Case17(int taskCount)
+        {
+            if (taskCount / 10 == 1)
+            {
+                string result = taskCount switch
+                {
+                    10 => "десять",
+                    11 => "одинадцать",
+                    12 => "двенадцать",
+                    13 => "тринадцать",
+                    14 => "четырнадцать",
+                    15 => "пятнадцать",
+                    16 => "шестнадцать",
+                    17 => "семнадцать",
+                    18 => "восемнадцать",
+                    19 => "девятнадцать",
+                };
+
+                return result + " учебных заданий";
+            }
+
+            int firstDecimal = taskCount / 10;
+
+            string firstDecimalName = firstDecimal switch
+            {
+                2 => "двадцать",
+                3 => "тридцать",
+                4 => "сорок",
+            };
+
+            int secondDecimal = taskCount % 10;
+
+            string secondDecimalName = secondDecimal switch
+            {
+                1 => " одно",
+                2 => " два",
+                3 => " три",
+                4 => " четыре",
+                5 => " пять",
+                6 => " шесть",
+                7 => " семь",
+                8 => " восемь",
+                9 => " девять",
+                0 => ""
+            };
+
+            string countOfTasksName = secondDecimal switch
+            {
+                0 or 5 or 6 or 7 or 8 or 9 => " учебных заданий",
+                1 => " учебное задание",
+                2 or 3 or 4 => " учебных задания"
+            };
+
+            return firstDecimalName + secondDecimalName + countOfTasksName;
+        }
+
+        private string Case18(int number)
+        {
+            int hundreds = number / 100;
+            int tens = number / 10 - hundreds * 10;
+            int ones = number % 10;
+
+            string hundredsName = (number / 100) switch
+            {
+                1 => "сто",
+                2 => "двести",
+                3 => "триста",
+                4 => "четыреста",
+                5 => "пятьсот",
+                6 => "шестьсот",
+                7 => "семьсот",
+                8 => "восемьсот",
+                9 => "девятьсот"
+            };
+
+            if (tens == 1)
+            {
+                int twoLastDecimals = number % 100;
+
+                string twoLastDecimalsName = twoLastDecimals switch
+                {
+                    10 => " десять",
+                    11 => " одинадцать",
+                    12 => " двенадцать",
+                    13 => " тринадцать",
+                    14 => " четырнадцать",
+                    15 => " пятнадцать",
+                    16 => " шестнадцать",
+                    17 => " семнадцать",
+                    18 => " восемнадцать",
+                    19 => " девятнадцать",
+                };
+
+                return hundredsName + twoLastDecimalsName;
+            }
+
+            string tensName = tens switch
+            {
+                2 => " двадцать",
+                3 => " тридцать",
+                4 => " сорок",
+                5 => " пятьдесят",
+                6 => " шестьдесят",
+                7 => " семьдесят",
+                8 => " восемьдесят",
+                9 => " девяносто",
+                0 => " "
+            };
+
+            string onesName = ones switch
+            {
+                1 => " один",
+                2 => " два",
+                3 => " три",
+                4 => " четыре",
+                5 => " пять",
+                6 => " шесть",
+                7 => " семь",
+                8 => " восемь",
+                9 => " девять",
+                0 => " "
+
+            };
+
+            return hundredsName + tensName + onesName;
+        }
+
+        private string Case19(int year)
+        {
+            string startingColorName = (year % 10) switch
+            {
+                0 or 1 => "бел",
+                2 or 3 => "черн",
+                4 or 5 => "зелен",
+                6 or 7 => "красн",
+                8 or 9 => "желт",
+            };
+
+            string endingColorName = ((year + 1) % 5) switch
+            {
+                0 or 1 or 2 or 3 or 4 or 5 or 9 or 10 or 11 => "ой",
+                6 or 7 or 8 => "ого"
+            };
+
+            string colorName = startingColorName + endingColorName;
+
+            string animalName = ((year + 8) % 12) switch
+            {
+                1 => " крысы",
+                2 => " коровы",
+                3 => " тигра",
+                4 => " зайца",
+                5 => " дракона",
+                6 => " змеи",
+                7 => " лошади",
+                8 => " овцы",
+                9 => " обезьяны",
+                10 => " курицы",
+                11 => " собаки",
+                12 => " свиньи",
+            };
+
+            return colorName + animalName;
+        }
+
+        private string Case20(int day, int month)
+        {
+            string zodiac = "";
+
+            switch (month) 
+            {
+                case 1:
+                    if (day > 19)
+                        zodiac = "водолей";
+                    else
+                        zodiac = "козерог";
+                    break;
+                case 2:
+                    if (day > 18)
+                        zodiac = "рыбы";
+                    else
+                        zodiac = "водолей";
+                    break;
+                case 3:
+                    if (day > 20)
+                        zodiac = "овен";
+                    else
+                        zodiac = "рыбы";
+                    break;
+                case 4:
+                    if (day > 19)
+                        zodiac = "телец";
+                    else
+                        zodiac = "овен";
+                    break;
+                case 5:
+                    if (day > 20)
+                        zodiac = "близнецы";
+                    else
+                        zodiac = "телец";
+                    break;
+                case 6:
+                    if (day > 21)
+                        zodiac = "рак";
+                    else
+                        zodiac = "близнецы";
+                    break;
+                case 7:
+                    if (day > 22)
+                        zodiac = "лев";
+                    else
+                        zodiac = "рак";
+                    break;
+                case 8:
+                    if (day > 22)
+                        zodiac = "дева";
+                    else
+                        zodiac = "лев";
+                    break;
+                case 9:
+                    if (day > 22)
+                        zodiac = "весы";
+                    else
+                        zodiac = "дева";
+                    break;
+                case 10:
+                    if (day > 22)
+                        zodiac = "скорпион";
+                    else
+                        zodiac = "весы";
+                    break;
+                case 11:
+                    if (day > 22)
+                        zodiac = "стрелец";
+                    else
+                        zodiac = "скорпион";
+                    break;
+                case 12:
+                    if (day > 21)
+                        zodiac = "козерог";
+                    else
+                        zodiac = "стрелец";
+                    break;
+
+            }
+
+            return zodiac;
+        }
         #endregion
     }
 }
