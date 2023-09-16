@@ -981,20 +981,23 @@ namespace Abramyan_Rush
         private int If18(int numberOne, int numberTwo, int numberThree)
         {
             if (numberOne == numberTwo)
+                return 3;
+
+            if (numberOne == numberThree)
                 return 2;
-            else if (numberOne == numberThree)
-                return 1;
-            else
-                return 0;
+
+            return 1;
         }
 
         private int If19(int numberOne, int numberTwo, int numberThree, int numberFour)
         {
             if (numberOne == numberTwo && numberOne == numberThree)
                 return numberFour;
-            else if (numberTwo == numberThree && numberTwo == numberFour)
+
+            if (numberTwo == numberThree && numberTwo == numberFour)
                 return numberOne;
-            else if (numberThree == numberFour && numberThree == numberOne)
+
+            if (numberThree == numberFour && numberThree == numberOne)
                 return numberTwo;
 
             return numberThree;
