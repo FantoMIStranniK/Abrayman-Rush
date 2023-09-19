@@ -1,7 +1,7 @@
 ﻿
 namespace Abramyan_Rush
 {
-    public class ScriptsPart1
+    public class TasksPart1
     {
         public void RunTest()
         {
@@ -408,7 +408,7 @@ namespace Abramyan_Rush
             return (ones, tens);
         }
 
-        private (int hundreds, int tens, int ones) GetNumberlements(int number)
+        private (int hundreds, int tens, int ones) GetNumberElements(int number)
         {
             int ones = number % 10;
 
@@ -421,7 +421,7 @@ namespace Abramyan_Rush
 
         private (int summ, int mult) Integer11(int number)
         {
-            var numberBits = GetNumberlements(number);
+            var numberBits = GetNumberElements(number);
 
             int summ = numberBits.hundreds + numberBits.ones + numberBits.tens;
             int mult = numberBits.hundreds * numberBits.ones * numberBits.tens;
@@ -431,7 +431,7 @@ namespace Abramyan_Rush
 
         private int Integer12(int number)
         {
-            var numberBits = GetNumberlements(number);
+            var numberBits = GetNumberElements(number);
 
             int newNumber = numberBits.ones * 100 + numberBits.tens * 10 + numberBits.hundreds;
 
@@ -466,7 +466,7 @@ namespace Abramyan_Rush
 
         private int Integer15(int number)
         {
-            var numberBits = GetNumberlements(number);
+            var numberBits = GetNumberElements(number);
 
             int newNumber = numberBits.ones + numberBits.hundreds * 10 + numberBits.tens * 100;
 
@@ -475,7 +475,7 @@ namespace Abramyan_Rush
 
         private int Integer16(int number)
         {
-            var numberBits = GetNumberlements(number);
+            var numberBits = GetNumberElements(number);
 
             number = numberBits.hundreds * 100 + numberBits.ones * 10 + numberBits.tens;
 
@@ -641,7 +641,7 @@ namespace Abramyan_Rush
 
         private bool Boolean20(int number)
         {
-            (int ones, int tens, int hundreds) numberBits = GetNumberlements(number);
+            (int ones, int tens, int hundreds) numberBits = GetNumberElements(number);
 
             return numberBits.ones != numberBits.tens &&
                 numberBits.ones != numberBits.hundreds &&
@@ -665,14 +665,14 @@ namespace Abramyan_Rush
 
         private bool Boolean21(int number)
         {
-            (int hundreds, int tens, int ones) numberBits = GetNumberlements(number);
+            (int hundreds, int tens, int ones) numberBits = GetNumberElements(number);
 
             return IsUprising(new List<int>() { numberBits.hundreds, numberBits.tens, numberBits.ones });
         }
 
         private bool Boolean22(int number)
         {
-            (int hundreds, int tens, int ones) numberBits = GetNumberlements(number);
+            (int hundreds, int tens, int ones) numberBits = GetNumberElements(number);
 
             return IsUprising(new List<int>() { numberBits.hundreds, numberBits.tens, numberBits.ones }) || IsUprising(new List<int>() { numberBits.ones, numberBits.tens, numberBits.hundreds });
         }
@@ -728,8 +728,8 @@ namespace Abramyan_Rush
             => hypotynuse * hypotynuse == sideOne * sideOne + sideTwo * sideTwo;
 
         private bool Boolean33(int sideOne, int sideTwo, int sideThree)
-            => TriangleCanExist(sideOne, sideTwo, sideThree) || TriangleCanExist(sideThree, sideOne, sideTwo) || TriangleCanExist(sideTwo, sideThree, sideOne);
-        private bool TriangleCanExist(int sideOne, int sideTwo, int sideThree)
+            => IsExistingTriangle(sideOne, sideTwo, sideThree) || IsExistingTriangle(sideThree, sideOne, sideTwo) || IsExistingTriangle(sideTwo, sideThree, sideOne);
+        private bool IsExistingTriangle(int sideOne, int sideTwo, int sideThree)
             => sideThree < sideOne + sideTwo;
 
         private bool Boolean34((int x, int y) cords)
@@ -785,7 +785,6 @@ namespace Abramyan_Rush
         }
         #endregion
 
-        #region If
 
         private int If1(int number)
             => number > 0 ? number + 1 : number;
@@ -870,18 +869,12 @@ namespace Abramyan_Rush
         {
             if (numberOne == numberTwo)
             {
-                numberOne = 0;
-                numberTwo = 0;
-            }
-            else
-            {
-                float summ = numberOne + numberTwo;
-
-                numberOne = summ;
-                numberTwo = summ;
+                return (0, 0);
             }
 
-            return (numberOne, numberTwo);
+            float summ = numberOne + numberTwo;
+
+            return (summ, summ);
         }
 
         private (float first, float second) If11(float numberOne, float numberTwo)
@@ -911,8 +904,10 @@ namespace Abramyan_Rush
             List<float> numbers = new() { numberOne, numberTwo, numberThree };
 
             foreach (var number in numbers)
+            {
                 if (number < minValue)
                     minValue = number;
+            }
 
             return minValue;
         }
@@ -926,8 +921,10 @@ namespace Abramyan_Rush
             List<float> numbers = new() { numberOne, numberTwo, numberThree };
 
             foreach (var number in numbers)
+            {
                 if (number > maxValue)
                     maxValue = number;
+            }
 
             return numberOne + numberTwo + numberThree - minValue - maxValue;
         }
@@ -1152,13 +1149,12 @@ namespace Abramyan_Rush
             return result + " число";
         }
 
-        #endregion
+        //#endregion
 
         #region Case
 
         private string Case1(int dayNumber)
-        {
-            string result = dayNumber switch
+            => dayNumber switch
             {
                 1 => "понедельник",
                 2 => "вторник",
@@ -1170,12 +1166,8 @@ namespace Abramyan_Rush
                 _ => "ошибка"
             };
 
-            return result;
-        }
-
         private string Case2(int mark)
-        {
-            string result = mark switch
+            => mark switch
             {
                 1 => "плохо",
                 2 => "неудовлетворительно",
@@ -1184,9 +1176,6 @@ namespace Abramyan_Rush
                 5 => "отлично",
                 _ => "ошибка"
             };
-
-            return result;
-        }
 
         private string Case3(int monthNumber)
         {
