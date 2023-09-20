@@ -1,11 +1,14 @@
 ﻿
+using System.Data;
+using System.Diagnostics.CodeAnalysis;
+
 namespace Abramyan_Rush
 {
     public class TasksPart2
     {
         public void RunTest()
         {
-            For40(2, 10);
+
         }
 
         #region For
@@ -594,5 +597,466 @@ namespace Abramyan_Rush
             }
         }
         #endregion
+
+        #region While
+
+        private float While1(float A, float B)
+        {
+            while (B >= A)
+                A -= B;
+
+            return A;
+        }
+
+        private int While2(float A, float B)
+        {
+            int countOfParts = 0;
+
+            while (A >= B)
+            {
+                A -= B;
+                countOfParts++;
+            }
+
+            return countOfParts;
+        }
+        private (int result, float leftover) While3(float N, float K)
+        {
+            int countOfParts = 0;
+
+            while (K >= N)
+            {
+                N -= K;
+                countOfParts++;
+            }
+
+            return (countOfParts, N);
+        }
+
+        private bool While4(int N)
+        {
+            while (N > 0)
+                N -= 3;
+
+            return N == 0 ? true : false;
+        }
+
+        private int While5(int N) 
+        {
+            int K = 0;
+
+            while(N >= 2)
+            {
+                N /= 2;
+
+                K++;
+            }
+
+            return K;
+        }
+
+        private float While6(int N)
+        {
+            float factorial = 1f;
+
+            while(N >= 2)
+            {
+                factorial *= N;
+
+                N -= 2;
+            }
+
+            return factorial;
+        }
+
+        private int While7(int N)
+        {
+            int K = N;
+
+            int squareNumber = K * K;
+
+            while(N / squareNumber > N)
+            {
+                K--;
+
+                squareNumber = K * K;
+            }
+
+            return K;
+        }
+
+        private int While8(int N)
+        {
+            int K = N;
+
+            while (K * K <= N)
+                K++;
+
+            return K - 1;
+        }
+
+        private int While9(int N)
+        {
+            int squareNumber = 3;
+
+            int K = 1;
+
+            while(squareNumber <= N)
+            {
+                K++;
+
+                squareNumber *= 3;
+            }
+
+            return K;
+        }
+
+        private int While10(int N)
+        {
+            int squareNumber = 3;
+
+            int K = 0;
+
+            while (squareNumber < N)
+            {
+                K++;
+
+                squareNumber *= 3;
+            }
+
+            return K;
+        }
+
+        private int While11(int N)
+        {
+            int K = 0;
+            int summ = 0;
+
+            while(summ <= N)
+            {
+                K++;
+
+                summ += K;
+            }
+
+            return K;
+        }
+
+        private int While12(int N)
+        {
+            int K = 0;
+            int summ = 0;
+
+            while (summ + K + 1 !<= N)
+            {
+                K++;
+
+                summ += K;
+            }
+
+            return K;
+        }
+
+        private (int K, float summ) While13(int A)
+        {
+            int K = 1;
+            float summ = 0;
+
+            while(summ <= A)
+            {
+                summ += 1f / K;
+
+                K++;
+            }
+
+            return (K, summ);
+        }
+
+        private (int K, float summ) While14(int A)
+        {
+            int K = 1;
+            float summ = 0;
+
+            while (summ <= A)
+            {
+                summ += 1f / K;
+
+                K++;
+            }
+
+            summ -= 1f / K;
+            K--;
+
+            return (K, summ);
+        }
+
+        private (int K, float summ) While15(float P)
+        {
+            int K = 0;
+            float S = 1000;
+
+            while(S <= 1100)
+            {
+                K++;
+
+                S+= (S * P) / 100f;
+            }
+
+            return (K, S);
+        }
+
+        private (int K, float summ) While16(float P)
+        {
+            int K = 0;
+            float S = 10;
+
+            while (S <= 200)
+            {
+                K++;
+
+                S += (S * P) / 100f;
+            }
+
+            return (K, S);
+        }
+
+        private void While17(int N) 
+        { 
+            while(N > 0)
+            {
+                Console.WriteLine(N % 10);
+
+                N /= 10;
+            }
+        }
+
+        private (int countOfNumbers, int summOfNumbers) While18(int N)
+        {
+            int summ = 0;
+            int counter = 0;
+
+            while(N > 0)
+            {
+                counter++;
+
+                summ += N % 10;
+
+                N /= 10;
+            }
+
+            return (counter, summ);
+        }
+
+        private int While19(int N) 
+        {
+            int result = 0;
+
+            while(N > 0)
+            {
+                result *= 10 + N % 10;
+
+                N /= 10;
+            }
+
+            return result;
+        }
+
+        private bool While20(int N)
+        {
+            while (N > 0)
+            {
+                if (N % 10 == 2)
+                    return true;
+
+                N /= 10;
+            }
+
+            return false;
+        }
+
+        private bool While21(int N)
+        {
+            int leftover = 0;
+
+            while(N > 0)
+            {
+                leftover = N % 10;
+
+                if (leftover % 2 != 0)
+                    return true;
+
+                N /= 10;
+            }
+
+            return false;
+        }
+
+        private bool While22(int N)
+        {
+            int divider = 2;
+
+            while (divider < N - 1)
+            {
+                if (divider % 2 == 0)
+                    return false;
+
+                divider++;
+            }
+
+            return true;
+        }
+
+        private int While23(int A, int B)
+        {
+            while(A != 0 && B != 0)
+            {
+                if (A > B)
+                    A %= B;
+                else
+                    B %= A;
+            }
+
+            return A + B;
+        }
+
+        private bool While24(int N)
+        {
+            int firstPreviousElement = 1;
+            int secondPreviousElement = 1;
+
+            int result = 0;
+
+            while (result <= N)
+            {
+                result = firstPreviousElement + secondPreviousElement;
+
+                if(result == N)
+                    return true;
+
+                secondPreviousElement = firstPreviousElement;
+                firstPreviousElement = result;
+            }
+
+            return false;
+        }
+
+        private int While25(int N)
+        {
+            int firstPreviousElement = 1;
+            int secondPreviousElement = 1;
+            int result = 0;
+
+            while (result < N + 1)
+            {
+                result = firstPreviousElement + secondPreviousElement;
+
+                secondPreviousElement = firstPreviousElement;
+                firstPreviousElement = result;
+            }
+
+            return result;
+        }
+
+        private (int previousNumber, int folowingNumber) While26(int N)
+        {
+            int firstPreviousElement = 1;
+            int secondPreviousElement = 1;
+            int result = 0;
+
+            while (result < N + 1)
+            {
+                result = firstPreviousElement + secondPreviousElement;
+
+                secondPreviousElement = firstPreviousElement;
+                firstPreviousElement = result;
+            }
+
+            return (secondPreviousElement, secondPreviousElement + firstPreviousElement);
+        }
+
+        private int While27(int N)
+        {
+            int firstPreviousElement = 1;
+            int secondPreviousElement = 1;
+            int result = 0;
+
+            int index = 2;
+
+            while (result < N + 1)
+            {
+                index++;
+
+                result = firstPreviousElement + secondPreviousElement;
+
+                secondPreviousElement = firstPreviousElement;
+                firstPreviousElement = result;
+
+            }
+
+            return index;
+        }
+
+        private (int index, float previousNumber, float number) While28(float epsilon)
+        {
+            float previousNumber = 2;
+            float result = 0;
+
+            int index = 0;
+
+            while(MathF.Abs(previousNumber - result) < epsilon)
+            {
+                index++;
+
+                result = 2f + 1f / previousNumber;
+
+                previousNumber = result;
+            }
+
+            return (index, previousNumber, result);
+        }
+        private (int index, float previousNumber, float number) While29(float epsilon)
+        {
+            float firstPreviousNumber = 2;
+            float secondPreviousNumber = 1;
+            float result = 0;
+
+            int index = 0;
+
+            while (MathF.Abs(firstPreviousNumber - result) < epsilon)
+            {
+                index++;
+
+                result = (secondPreviousNumber + 2f * firstPreviousNumber) / 3f;
+
+                secondPreviousNumber = firstPreviousNumber;
+                firstPreviousNumber = result;
+            }
+
+            return (index, firstPreviousNumber, result);
+        }
+
+        private int While30(int A, int B, int C) 
+        {
+            float BSide;
+
+            int K = 0;
+
+            while ((A - C) >= 0)
+            {
+                A -= C;
+
+                BSide = B;
+
+                while(BSide - C >= 0)
+                {
+                    BSide -= C;
+
+                    K++;
+                }
+            }
+
+            return K;
+        }
     }
+    #endregion
 }
