@@ -1,6 +1,6 @@
 ﻿
-using System.Data;
 using System.Diagnostics.CodeAnalysis;
+using System.Resources;
 
 namespace Abramyan_Rush
 {
@@ -8,26 +8,26 @@ namespace Abramyan_Rush
     {
         public void RunTest()
         {
-
+            Console.WriteLine(Series23(3));
         }
 
         #region For
 
         private void For1(int N, int K)
         {
-            for(int i = 0; i < N; i++)
+            for (int i = 0; i < N; i++)
                 Console.WriteLine(K);
         }
 
-        private void For2(int A, int B) 
-        { 
-            for(int i = A; i <= B; i++)
+        private void For2(int A, int B)
+        {
+            for (int i = A; i <= B; i++)
                 Console.WriteLine(i);
         }
 
         private void For3(int A, int B)
         {
-            for(int i = B - 1; i > A; i--)
+            for (int i = B - 1; i > A; i--)
                 Console.WriteLine(i);
 
             Console.WriteLine(B - A - 1);
@@ -35,7 +35,7 @@ namespace Abramyan_Rush
 
         private void For4(float price)
         {
-            for(int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 10; i++)
                 Console.WriteLine(i * price);
         }
 
@@ -55,7 +55,7 @@ namespace Abramyan_Rush
         {
             int summ = 0;
 
-            for(int i = A; i <= B; i++)
+            for (int i = A; i <= B; i++)
                 summ += i;
 
             return summ;
@@ -95,7 +95,7 @@ namespace Abramyan_Rush
         {
             float summ = 0f;
 
-            for(int i = 0; i <= N; i++)
+            for (int i = 0; i <= N; i++)
             {
                 float nextNumber = N + i;
 
@@ -111,14 +111,14 @@ namespace Abramyan_Rush
 
             float number = 1.1f;
 
-            for(int i = 0; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 mult *= number;
 
                 number += 0.1f;
             }
 
-            return mult;    
+            return mult;
         }
 
         private float For13(int N)
@@ -165,7 +165,7 @@ namespace Abramyan_Rush
         {
             float squareNumber = A;
 
-            for(int i = 1; i <= N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 Console.WriteLine(squareNumber);
 
@@ -178,7 +178,7 @@ namespace Abramyan_Rush
             float squareNumber = A;
             float summ = 1f;
 
-            for(int i = 0; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 summ += squareNumber;
 
@@ -273,7 +273,7 @@ namespace Abramyan_Rush
 
             int turn = 1;
 
-            for (int i = 1; i <= N; i+= 2)
+            for (int i = 1; i <= N; i += 2)
             {
                 factorial *= i;
 
@@ -313,14 +313,14 @@ namespace Abramyan_Rush
             return result;
         }
 
-        private float For25(float X, int N) 
+        private float For25(float X, int N)
         {
             float result = 0f;
             float squareNumber = X;
 
             int turn = 1;
 
-            for(int i = 1; i <= N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 result += squareNumber / i * turn;
 
@@ -359,7 +359,7 @@ namespace Abramyan_Rush
             int upperPart = 1;
             int bottomPart = 1;
 
-            for(int i = 1; i <= N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 squareNumber *= X * X;
 
@@ -390,14 +390,14 @@ namespace Abramyan_Rush
 
                 result += (upperPart * squareNumber / bottomPart) * turn;
 
-                turn = -turn;   
+                turn = -turn;
             }
 
             return result;
 
         }
 
-        private void For29(int N, float A, float B) 
+        private void For29(int N, float A, float B)
         {
             float H = (B - A) / N;
 
@@ -425,7 +425,7 @@ namespace Abramyan_Rush
         {
             float previousNumber = 2f;
 
-            for(int i = 0; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 float nextNumber = 2f + 1f / previousNumber;
 
@@ -435,7 +435,7 @@ namespace Abramyan_Rush
             }
         }
 
-        private void For32(int N) 
+        private void For32(int N)
         {
             float previousNumber = 2f;
 
@@ -457,7 +457,7 @@ namespace Abramyan_Rush
             Console.WriteLine(firstPreviousNumber);
             Console.WriteLine(secondPreviousNumber);
 
-            for(int i = 2; i <= N; i++)
+            for (int i = 2; i <= N; i++)
             {
                 int result = secondPreviousNumber - firstPreviousNumber;
 
@@ -516,11 +516,11 @@ namespace Abramyan_Rush
 
             float powerNumber = 1f;
 
-            for(int i = 1; i <= N; i++)
+            for (int i = 1; i <= N; i++)
             {
                 powerNumber = i;
 
-                for(int j = 0; j < K; j++)
+                for (int j = 0; j < K; j++)
                 {
                     powerNumber *= i;
                 }
@@ -536,11 +536,11 @@ namespace Abramyan_Rush
             float summ = 0f;
             float powerNumber = 1f;
 
-            for(int i = 0; i < N; i++)
+            for (int i = 0; i < N; i++)
             {
                 powerNumber = i;
 
-                for(int j = 0; j < i; j++)
+                for (int j = 0; j < i; j++)
                 {
                     powerNumber *= i;
                 }
@@ -573,9 +573,9 @@ namespace Abramyan_Rush
 
         private void For39(int A, int B)
         {
-            for(int i = A; i < B; i++)
+            for (int i = A; i < B; i++)
             {
-                for(int j = 0; j < i; j++)
+                for (int j = 0; j < i; j++)
                 {
                     Console.WriteLine(i);
                 }
@@ -641,11 +641,11 @@ namespace Abramyan_Rush
             return N == 0 ? true : false;
         }
 
-        private int While5(int N) 
+        private int While5(int N)
         {
             int K = 0;
 
-            while(N >= 2)
+            while (N >= 2)
             {
                 N /= 2;
 
@@ -659,7 +659,7 @@ namespace Abramyan_Rush
         {
             float factorial = 1f;
 
-            while(N >= 2)
+            while (N >= 2)
             {
                 factorial *= N;
 
@@ -675,7 +675,7 @@ namespace Abramyan_Rush
 
             int squareNumber = K * K;
 
-            while(N / squareNumber > N)
+            while (N / squareNumber > N)
             {
                 K--;
 
@@ -701,7 +701,7 @@ namespace Abramyan_Rush
 
             int K = 1;
 
-            while(squareNumber <= N)
+            while (squareNumber <= N)
             {
                 K++;
 
@@ -732,7 +732,7 @@ namespace Abramyan_Rush
             int K = 0;
             int summ = 0;
 
-            while(summ <= N)
+            while (summ <= N)
             {
                 K++;
 
@@ -747,7 +747,7 @@ namespace Abramyan_Rush
             int K = 0;
             int summ = 0;
 
-            while (summ + K + 1 !<= N)
+            while (summ + K + 1! <= N)
             {
                 K++;
 
@@ -762,7 +762,7 @@ namespace Abramyan_Rush
             int K = 1;
             float summ = 0;
 
-            while(summ <= A)
+            while (summ <= A)
             {
                 summ += 1f / K;
 
@@ -795,11 +795,11 @@ namespace Abramyan_Rush
             int K = 0;
             float S = 1000;
 
-            while(S <= 1100)
+            while (S <= 1100)
             {
                 K++;
 
-                S+= (S * P) / 100f;
+                S += (S * P) / 100f;
             }
 
             return (K, S);
@@ -820,9 +820,9 @@ namespace Abramyan_Rush
             return (K, S);
         }
 
-        private void While17(int N) 
-        { 
-            while(N > 0)
+        private void While17(int N)
+        {
+            while (N > 0)
             {
                 Console.WriteLine(N % 10);
 
@@ -835,7 +835,7 @@ namespace Abramyan_Rush
             int summ = 0;
             int counter = 0;
 
-            while(N > 0)
+            while (N > 0)
             {
                 counter++;
 
@@ -847,11 +847,11 @@ namespace Abramyan_Rush
             return (counter, summ);
         }
 
-        private int While19(int N) 
+        private int While19(int N)
         {
             int result = 0;
 
-            while(N > 0)
+            while (N > 0)
             {
                 result *= 10 + N % 10;
 
@@ -878,7 +878,7 @@ namespace Abramyan_Rush
         {
             int leftover = 0;
 
-            while(N > 0)
+            while (N > 0)
             {
                 leftover = N % 10;
 
@@ -908,7 +908,7 @@ namespace Abramyan_Rush
 
         private int While23(int A, int B)
         {
-            while(A != 0 && B != 0)
+            while (A != 0 && B != 0)
             {
                 if (A > B)
                     A %= B;
@@ -930,7 +930,7 @@ namespace Abramyan_Rush
             {
                 result = firstPreviousElement + secondPreviousElement;
 
-                if(result == N)
+                if (result == N)
                     return true;
 
                 secondPreviousElement = firstPreviousElement;
@@ -1003,7 +1003,7 @@ namespace Abramyan_Rush
 
             int index = 0;
 
-            while(MathF.Abs(previousNumber - result) < epsilon)
+            while (MathF.Abs(previousNumber - result) < epsilon)
             {
                 index++;
 
@@ -1035,7 +1035,7 @@ namespace Abramyan_Rush
             return (index, firstPreviousNumber, result);
         }
 
-        private int While30(int A, int B, int C) 
+        private int While30(int A, int B, int C)
         {
             float BSide;
 
@@ -1047,7 +1047,7 @@ namespace Abramyan_Rush
 
                 BSide = B;
 
-                while(BSide - C >= 0)
+                while (BSide - C >= 0)
                 {
                     BSide -= C;
 
@@ -1057,6 +1057,699 @@ namespace Abramyan_Rush
 
             return K;
         }
+        #endregion
+
+        #region Series
+
+        private float Series1(List<float> numbers)
+        {
+            float summ = 0f;
+
+            foreach (float number in numbers)
+                summ += number;
+
+            return summ;
+        }
+
+        private float Series2(List<float> numbers)
+        {
+            float mult = 1f;
+
+            foreach (float number in numbers)
+                mult *= number;
+
+            return mult;
+        }
+
+        private float Series3(List<float> numbers)
+        {
+            float summ = 0f;
+
+            foreach (float number in numbers)
+                summ += number;
+
+            return summ / numbers.Count;
+        }
+
+        private (float summ, float mult) Series4(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            float summ = 0f;
+            float mult = 1f;
+
+            foreach (var number in numbers)
+            {
+                summ += number;
+                mult *= number;
+            }
+
+            return (summ, mult);
+        }
+
+        private (List<float> numbers, float summ) Series5(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            float summ = 0f;
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                numbers[i] = (float)numbers[i] / 1;
+
+                summ += numbers[i];
+            }
+
+            return (numbers, summ);
+        }
+
+        private (List<float> numbers, float mult) Series6(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            float mult = 1f;
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                numbers[i] = (float)numbers[i] % 1;
+
+                mult *= numbers[i];
+            }
+
+            return (numbers, mult);
+        }
+
+        private (List<int> numbers, int summ) Series7(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            List<int> roundNumbers = new();
+
+            int summ = 0;
+
+            foreach (var number in numbers)
+            {
+                var roundNumber = (int)MathF.Round(number);
+
+                summ += roundNumber;
+
+                roundNumbers.Add(roundNumber);
+            }
+
+            return (roundNumbers, summ);
+        }
+
+        private (List<int> numbers, int countOfOddNumbers) Series8(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            List<int> oddNumbers = new();
+
+            int countOfOddNumbers = 0;
+
+            foreach (var number in numbers)
+            {
+                if (number % 2 != 0)
+                    continue;
+
+                countOfOddNumbers++;
+
+                oddNumbers.Add(number);
+            }
+
+            return (oddNumbers, countOfOddNumbers);
+        }
+
+        private (List<int> indexes, int countOfNotOddNumbers) Series9(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            List<int> notOddNumbersIndexes = new();
+
+            int countOfNotOddNumbers = 0;
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (numbers[i] % 2 == 0)
+                    continue;
+
+                countOfNotOddNumbers++;
+
+                notOddNumbersIndexes.Add(i);
+            }
+
+            return (notOddNumbersIndexes, countOfNotOddNumbers);
+        }
+
+        private bool Series10(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            foreach (var number in numbers)
+                if (number > 0)
+                    return true;
+
+            return false;
+        }
+
+        private bool Series11(int N, int K)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            foreach (var number in numbers)
+                if (number < K)
+                    return true;
+
+            return false;
+        }
+
+        private int Series12()
+            => SeriesUtilities.CreateListEndingWithZero().Count;
+
+        private int Series13()
+        {
+            var numbers = SeriesUtilities.CreateListEndingWithZero();
+
+            int summ = 0;
+
+            foreach (var number in numbers)
+            {
+                if (number < 0)
+                    continue;
+
+                summ += number;
+            }
+
+            return summ;
+        }
+
+        private int Series14(int K)
+        {
+            var numbers = SeriesUtilities.CreateListEndingWithZero();
+
+            int countOfNumbersLessThanK = 0;
+
+            foreach (var number in numbers)
+            {
+                if (number >= K)
+                    continue;
+
+                countOfNumbersLessThanK++;
+            }
+
+            return countOfNumbersLessThanK;
+        }
+
+        private int Series15(int K)
+        {
+            var numbers = SeriesUtilities.CreateListEndingWithZero();
+
+            for (int i = 0; i < numbers.Count; i++)
+                if (numbers[i] > K)
+                    return i;
+
+            return 0;
+        }
+
+        private int Series16(int K)
+        {
+            var numbers = SeriesUtilities.CreateListEndingWithZero();
+
+            int lastNumberIndexLessThanK = 0;
+
+            for (int i = 0; i < numbers.Count; i++)
+                if (numbers[i] > K)
+                    lastNumberIndexLessThanK = i;
+
+            return lastNumberIndexLessThanK;
+        }
+
+        private List<float> Series17(float B, int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            numbers.Sort();
+
+            if (B >= numbers[numbers.Count - 1])
+            {
+                numbers.Add(B);
+            }
+            else
+            {
+                for (int i = 0; i < numbers.Count - 1; i++)
+                {
+                    if (numbers[i] >= B && B <= numbers[i + 1])
+                    {
+                        numbers.Insert(i, B);
+                        break;
+                    }
+                }
+            }
+
+            return numbers;
+        }
+
+        private List<int> Series18(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            numbers.Sort();
+
+            List<int> uniqueNumbers = new();
+
+            for (int i = 0; i < numbers.Count - 1; i++)
+            {
+                if (numbers[i] != numbers[i + 1])
+                    uniqueNumbers.Add(numbers[i]);
+            }
+
+            return uniqueNumbers;
+        }
+
+        private (List<int> lowerElements, int K) Series19(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            int countOfLowerElements = 0;
+
+            List<int> lowerElements = new();
+
+            for (int i = 1; i < numbers.Count; i++)
+            {
+                if (numbers[i] < numbers[i - 1])
+                {
+                    countOfLowerElements++;
+
+                    lowerElements.Add(numbers[i]);
+                }
+            }
+
+            return (lowerElements, countOfLowerElements);
+        }
+
+        private (List<int> lowerElements, int K) Series20(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            int countOfLowerElements = 0;
+
+            List<int> lowerElements = new();
+
+            for (int i = 0; i < numbers.Count - 1; i++)
+            {
+                if (numbers[i] < numbers[i + 1])
+                {
+                    countOfLowerElements++;
+
+                    lowerElements.Add(numbers[i]);
+                }
+            }
+
+            return (lowerElements, countOfLowerElements);
+        }
+
+        private bool Series21(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            for (int i = 1; i < numbers.Count; i++)
+                if (numbers[i - 1] <= numbers[i])
+                    return false;
+
+            return true;
+        }
+
+        private int Series22(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            for (int i = 1; i < numbers.Count; i++)
+                if (numbers[i - 1] >= numbers[i])
+                    return i;
+
+            return 0;
+        }
+
+        private int Series23(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            for (int i = 1; i < numbers.Count - 1; i++)
+                if (!IsSawtooth(numbers[i - 1], numbers[i], numbers[i + 1]))
+                    return i;
+
+            return 0;
+        }
+
+        private bool IsSawtooth(float previousElement, float currentElement, float nextElement)
+        {
+            bool isLower = previousElement > currentElement && currentElement < nextElement;
+
+            bool isHigher = previousElement < currentElement && currentElement > nextElement;
+
+            return isLower || isHigher;
+        }
+
+        private int Series24(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            int summ = 0;
+            int tempSumm = 0;
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (i != 0)
+                    continue;
+
+                tempSumm += numbers[i];
+
+                if (numbers[i] == 0)
+                {
+                    summ = tempSumm;
+                    tempSumm = 0;
+                }
+            }
+
+            return summ;
+        }
+
+        private int Series25(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomIntList(N);
+
+            int? firstZeroIndex = null;
+            int? secondZeroIndex = null;
+
+            int summ = 0;
+
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                if (i != 0)
+                    continue;
+
+                if (firstZeroIndex == null)
+                    firstZeroIndex = i;
+                else
+                    secondZeroIndex = i;
+            }
+
+            for (int i = (int)firstZeroIndex; i < secondZeroIndex; i++)
+                summ += numbers[i];
+
+            return summ;
+
+        }
+
+        private void Series26(int N, int K)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            for(int i = 0; i < numbers.Count; i++)
+                Console.WriteLine(For15(numbers[i], K));
+        }
+
+        private void Series27(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            for (int i = 0; i < numbers.Count; i++)
+                Console.WriteLine(For15(numbers[i],  i + 1));
+        }
+
+        private void Series28(int N)
+        {
+            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+
+            for (int i = 0; i < numbers.Count; i++)
+                Console.WriteLine(For15(numbers[i], numbers.Count - i));
+        }
+
+        private int Series29(int N, int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+
+            int summ = 0;
+
+            foreach(var list in lists)
+                foreach(var number in list)
+                    summ += number;
+
+            return summ;
+        }
+
+        private void Series30(int N, int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+
+            int summ = 0;
+
+            foreach (var list in lists)
+            {
+                foreach (var number in list)
+                    summ += number;
+
+                Console.WriteLine(summ);
+
+                summ = 0;
+            }
+        }
+
+        private int Series31(int N, int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+
+            int countOfListsWithTwo = 0;
+
+            foreach (var list in lists)
+            {
+                foreach (var number in list)
+                {
+                    if (number == 2)
+                    {
+                        countOfListsWithTwo++;
+                        break;
+                    }
+                }
+            }
+
+            return countOfListsWithTwo;
+        }
+
+        private void Series32(int N, int K) 
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+
+            int indexOfFirstTwo = 0;
+
+            foreach(var list in lists)
+            {
+                for(int i = 0; i < list.Count; i++)
+                {
+                    if (list[i] == 2) 
+                    { 
+                        indexOfFirstTwo = i; 
+                        break;
+                    }
+                }
+
+                Console.WriteLine(indexOfFirstTwo);
+
+                indexOfFirstTwo = 0;
+            }
+        }
+
+        private void Series33(int N, int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+
+            int indexOfFirstTwo = 0;
+
+            foreach (var list in lists)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i] == 2)
+                        indexOfFirstTwo = i;
+                }
+
+                Console.WriteLine(indexOfFirstTwo);
+
+                indexOfFirstTwo = 0;
+            }
+        }
+
+        private void Series34(int N, int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+
+            bool hasTwo = false;
+
+            int summ = 0;
+
+            foreach (var list in lists)
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i] == 2)
+                        hasTwo = true;
+                }
+
+                if (!hasTwo)
+                    summ = 0;
+
+                Console.WriteLine(summ);
+            }
+        }
+
+        private void Series35(int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            int summLength = 0;
+
+            foreach(var list in lists)
+            {
+                Console.WriteLine(list.Count);
+
+                summLength += list.Count;
+            }
+        }
+
+        private int Series36(int K) 
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            int countOfUprisingLists = 0;
+
+            foreach(var list in lists)
+            {
+                countOfUprisingLists++;
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (list[i - 1] <= list[i])
+                    {
+                        countOfUprisingLists--;
+                        break;
+                    }
+                }
+            }
+
+            return countOfUprisingLists;
+        }
+
+        private int Series37(int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            bool isUprising = true;
+            bool isFalling = true;
+
+            int countOfUprisingOrFallingLists = 0;
+
+            foreach (var list in lists)
+            {
+                for (int i = 1; i < list.Count; i++)
+                {
+                    if (list[i] < list[i - 1])
+                        isUprising = false;
+                    if(list[i] > list[i - 1])
+                        isFalling = false;
+                }
+
+                if (isFalling != isUprising)
+                    countOfUprisingOrFallingLists++;
+
+                isFalling = true;
+                isUprising = true;
+            }
+
+            return countOfUprisingOrFallingLists;
+        }
+
+        private void Series38(int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            bool isUprising = true;
+            bool isFalling = true;
+
+            foreach (var list in lists)
+            {
+                for (int i = 1; i < list.Count; i++)
+                {
+                    if (list[i] < list[i - 1])
+                        isUprising = false;
+                    if (list[i] > list[i - 1])
+                        isFalling = false;
+                }
+
+                if (isFalling && isUprising)
+                    Console.WriteLine(0);
+                else if (isFalling && !isUprising)
+                    Console.WriteLine(-1);
+                else if (isUprising && !isFalling)
+                    Console.WriteLine(1);
+
+                isFalling = true;
+                isUprising = true;
+            }
+        }
+
+        private int Series39(int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            int countOfSawtoothLists = 0;
+
+            foreach (var list in lists)
+            {
+                countOfSawtoothLists++;
+
+                for(int i = 1; i < list.Count - 1; i++)
+                {
+                    if (!IsSawtooth(list[i - 1], list[i], list[i + 1]))
+                    {
+                        countOfSawtoothLists--;
+                        break;
+                    }
+                }
+            }
+
+            return countOfSawtoothLists;
+        }
+
+        private void Series40(int K)
+        {
+            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            int countOfSawtoothLists = 0;
+
+            bool isSawtooth = true;
+
+            foreach (var list in lists)
+            {
+                countOfSawtoothLists++;
+
+                for (int i = 1; i < list.Count - 1; i++)
+                {
+                    if (!IsSawtooth(list[i - 1], list[i], list[i + 1]))
+                    {
+                        Console.WriteLine(list[i]);
+
+                        isSawtooth = false;
+
+                        break;
+                    }
+                }
+
+                if (isSawtooth)
+                    Console.WriteLine(list.Count);
+
+                isSawtooth = true;
+            }
+        }
+        #endregion
     }
-    #endregion
 }
