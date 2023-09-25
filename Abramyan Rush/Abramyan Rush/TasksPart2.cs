@@ -8,7 +8,7 @@ namespace Abramyan_Rush
     {
         public void RunTest()
         {
-            Console.WriteLine(Series23(3));
+            Series38(3);
         }
 
         #region For
@@ -713,15 +713,15 @@ namespace Abramyan_Rush
 
         private int While10(int N)
         {
-            int squareNumber = 3;
+            int powerNumber = 3;
 
             int K = 0;
 
-            while (squareNumber < N)
+            while (powerNumber < N)
             {
                 K++;
 
-                squareNumber *= 3;
+                powerNumber *= 3;
             }
 
             return K;
@@ -1592,11 +1592,18 @@ namespace Abramyan_Rush
                 for (int i = 0; i < list.Count; i++)
                 {
                     if (list[i] == 2)
+                    {
                         hasTwo = true;
+                        break;
+                    }
+
+                    summ += list[i];
                 }
 
-                if (!hasTwo)
+                if (!hasTwo) 
+                {
                     summ = 0;
+                }
 
                 Console.WriteLine(summ);
             }
@@ -1670,7 +1677,10 @@ namespace Abramyan_Rush
 
         private void Series38(int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+
+            var list1 = new List<int>() { 1, 2, 3, 4 };
+
+            var lists = new List<List<int>>() { list1 };
 
             bool isUprising = true;
             bool isFalling = true;
