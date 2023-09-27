@@ -3,7 +3,7 @@ using System.ComponentModel.Design;
 
 namespace Abramyan_Rush
 {
-    public static class SeriesUtilities
+    public static class ListGenerators
     {
         private static Random rand = new Random();
 
@@ -56,6 +56,20 @@ namespace Abramyan_Rush
             }
 
             return lists;
+        }
+
+        public static List<(float, float)> CreateFloatTupleList(int length, int lowerLimit = 1, int upperLimit = 100)
+        {
+            List<(float, float)> list = new();
+
+            for(int i = 0; i < length; i++)
+            {
+                (float, float) tuple = (rand.Next(lowerLimit, upperLimit) + rand.NextSingle(), rand.Next(lowerLimit, upperLimit) + rand.NextSingle());
+
+                list.Add(tuple);
+            }
+
+            return list;
         }
     }
 }

@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            TasksPart2 part2 = new TasksPart2();
+            TasksPart3 part = new TasksPart3();
 
-            part2.RunTest();
+            part.RunTest();
         }
     }
 }

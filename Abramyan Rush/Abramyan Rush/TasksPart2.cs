@@ -1093,7 +1093,7 @@ namespace Abramyan_Rush
 
         private (float summ, float mult) Series4(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             float summ = 0f;
             float mult = 1f;
@@ -1109,7 +1109,7 @@ namespace Abramyan_Rush
 
         private (List<float> numbers, float summ) Series5(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             float summ = 0f;
 
@@ -1125,7 +1125,7 @@ namespace Abramyan_Rush
 
         private (List<float> numbers, float mult) Series6(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             float mult = 1f;
 
@@ -1141,7 +1141,7 @@ namespace Abramyan_Rush
 
         private (List<int> numbers, int summ) Series7(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             List<int> roundNumbers = new();
 
@@ -1161,7 +1161,7 @@ namespace Abramyan_Rush
 
         private (List<int> numbers, int countOfOddNumbers) Series8(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             List<int> oddNumbers = new();
 
@@ -1182,7 +1182,7 @@ namespace Abramyan_Rush
 
         private (List<int> indexes, int countOfNotOddNumbers) Series9(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             List<int> notOddNumbersIndexes = new();
 
@@ -1203,7 +1203,7 @@ namespace Abramyan_Rush
 
         private bool Series10(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             foreach (var number in numbers)
                 if (number > 0)
@@ -1214,7 +1214,7 @@ namespace Abramyan_Rush
 
         private bool Series11(int N, int K)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             foreach (var number in numbers)
                 if (number < K)
@@ -1224,11 +1224,11 @@ namespace Abramyan_Rush
         }
 
         private int Series12()
-            => SeriesUtilities.CreateListEndingWithZero().Count;
+            => ListGenerators.CreateListEndingWithZero().Count;
 
         private int Series13()
         {
-            var numbers = SeriesUtilities.CreateListEndingWithZero();
+            var numbers = ListGenerators.CreateListEndingWithZero();
 
             int summ = 0;
 
@@ -1245,7 +1245,7 @@ namespace Abramyan_Rush
 
         private int Series14(int K)
         {
-            var numbers = SeriesUtilities.CreateListEndingWithZero();
+            var numbers = ListGenerators.CreateListEndingWithZero();
 
             int countOfNumbersLessThanK = 0;
 
@@ -1262,7 +1262,7 @@ namespace Abramyan_Rush
 
         private int Series15(int K)
         {
-            var numbers = SeriesUtilities.CreateListEndingWithZero();
+            var numbers = ListGenerators.CreateListEndingWithZero();
 
             for (int i = 0; i < numbers.Count; i++)
                 if (numbers[i] > K)
@@ -1273,7 +1273,7 @@ namespace Abramyan_Rush
 
         private int Series16(int K)
         {
-            var numbers = SeriesUtilities.CreateListEndingWithZero();
+            var numbers = ListGenerators.CreateListEndingWithZero();
 
             int lastNumberIndexLessThanK = 0;
 
@@ -1286,7 +1286,7 @@ namespace Abramyan_Rush
 
         private List<float> Series17(float B, int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             numbers.Sort();
 
@@ -1311,7 +1311,7 @@ namespace Abramyan_Rush
 
         private List<int> Series18(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             numbers.Sort();
 
@@ -1328,7 +1328,7 @@ namespace Abramyan_Rush
 
         private (List<int> lowerElements, int K) Series19(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             int countOfLowerElements = 0;
 
@@ -1349,7 +1349,7 @@ namespace Abramyan_Rush
 
         private (List<int> lowerElements, int K) Series20(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             int countOfLowerElements = 0;
 
@@ -1370,7 +1370,7 @@ namespace Abramyan_Rush
 
         private bool Series21(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             for (int i = 1; i < numbers.Count; i++)
                 if (numbers[i - 1] <= numbers[i])
@@ -1381,7 +1381,7 @@ namespace Abramyan_Rush
 
         private int Series22(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             for (int i = 1; i < numbers.Count; i++)
                 if (numbers[i - 1] >= numbers[i])
@@ -1392,7 +1392,7 @@ namespace Abramyan_Rush
 
         private int Series23(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             for (int i = 1; i < numbers.Count - 1; i++)
                 if (!IsSawtooth(numbers[i - 1], numbers[i], numbers[i + 1]))
@@ -1412,7 +1412,7 @@ namespace Abramyan_Rush
 
         private int Series24(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             int summ = 0;
             int tempSumm = 0;
@@ -1436,7 +1436,7 @@ namespace Abramyan_Rush
 
         private int Series25(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomIntList(N);
+            var numbers = ListGenerators.CreateRandomIntList(N);
 
             int? firstZeroIndex = null;
             int? secondZeroIndex = null;
@@ -1463,7 +1463,7 @@ namespace Abramyan_Rush
 
         private void Series26(int N, int K)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             for(int i = 0; i < numbers.Count; i++)
                 Console.WriteLine(For15(numbers[i], K));
@@ -1471,7 +1471,7 @@ namespace Abramyan_Rush
 
         private void Series27(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             for (int i = 0; i < numbers.Count; i++)
                 Console.WriteLine(For15(numbers[i],  i + 1));
@@ -1479,7 +1479,7 @@ namespace Abramyan_Rush
 
         private void Series28(int N)
         {
-            var numbers = SeriesUtilities.CreateRandomFloatList(N);
+            var numbers = ListGenerators.CreateRandomFloatList(N);
 
             for (int i = 0; i < numbers.Count; i++)
                 Console.WriteLine(For15(numbers[i], numbers.Count - i));
@@ -1487,7 +1487,7 @@ namespace Abramyan_Rush
 
         private int Series29(int N, int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+            var lists = ListGenerators.CreateIntListOfLists(K, N);
 
             int summ = 0;
 
@@ -1500,7 +1500,7 @@ namespace Abramyan_Rush
 
         private void Series30(int N, int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+            var lists = ListGenerators.CreateIntListOfLists(K, N);
 
             int summ = 0;
 
@@ -1517,7 +1517,7 @@ namespace Abramyan_Rush
 
         private int Series31(int N, int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+            var lists = ListGenerators.CreateIntListOfLists(K, N);
 
             int countOfListsWithTwo = 0;
 
@@ -1538,7 +1538,7 @@ namespace Abramyan_Rush
 
         private void Series32(int N, int K) 
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+            var lists = ListGenerators.CreateIntListOfLists(K, N);
 
             int indexOfFirstTwo = 0;
 
@@ -1561,7 +1561,7 @@ namespace Abramyan_Rush
 
         private void Series33(int N, int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+            var lists = ListGenerators.CreateIntListOfLists(K, N);
 
             int indexOfFirstTwo = 0;
 
@@ -1581,7 +1581,7 @@ namespace Abramyan_Rush
 
         private void Series34(int N, int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, N);
+            var lists = ListGenerators.CreateIntListOfLists(K, N);
 
             bool hasTwo = false;
 
@@ -1611,7 +1611,7 @@ namespace Abramyan_Rush
 
         private void Series35(int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+            var lists = ListGenerators.CreateIntListOfLists(K, 0, true, 1, 100);
 
             int summLength = 0;
 
@@ -1625,7 +1625,7 @@ namespace Abramyan_Rush
 
         private int Series36(int K) 
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+            var lists = ListGenerators.CreateIntListOfLists(K, 0, true, 1, 100);
 
             int countOfUprisingLists = 0;
 
@@ -1648,7 +1648,7 @@ namespace Abramyan_Rush
 
         private int Series37(int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+            var lists = ListGenerators.CreateIntListOfLists(K, 0, true, 1, 100);
 
             bool isUprising = true;
             bool isFalling = true;
@@ -1709,7 +1709,7 @@ namespace Abramyan_Rush
 
         private int Series39(int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+            var lists = ListGenerators.CreateIntListOfLists(K, 0, true, 1, 100);
 
             int countOfSawtoothLists = 0;
 
@@ -1732,7 +1732,7 @@ namespace Abramyan_Rush
 
         private void Series40(int K)
         {
-            var lists = SeriesUtilities.CreateIntListOfLists(K, 0, true, 1, 100);
+            var lists = ListGenerators.CreateIntListOfLists(K, 0, true, 1, 100);
 
             int countOfSawtoothLists = 0;
 
