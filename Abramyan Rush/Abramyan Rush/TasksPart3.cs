@@ -1,15 +1,11 @@
 ﻿
-using Microsoft.VisualBasic.FileIO;
-using System.Net;
-using System.Net.NetworkInformation;
-
 namespace Abramyan_Rush
 {
     public class TasksPart3
     {
         public void RunTest()
         {
-
+            Console.WriteLine(MinMax30(1));
         }
 
         #region MinMax
@@ -635,16 +631,18 @@ namespace Abramyan_Rush
 
         private int MinMax30(int N)
         {
-            var numbers = ListGenerators.CreateRandomIntList(N, 0, 10);
+            var numbers = new List<int>() { 1, 1, 1, 1, 0, 1, 1};
 
             int max = int.MinValue;
 
             for (int i = 0; i < numbers.Count; i++)
+            {
                 if (numbers[i] > max)
                     max = numbers[i];
+            }
 
-            int length = 1;
-            int minLength = 0;
+            int length = 0;
+            int minLength = int.MaxValue;
 
             for (int i = 0; i < numbers.Count - 1; i++)
             {
@@ -659,10 +657,11 @@ namespace Abramyan_Rush
                 {
                     if (length < minLength)
                     {
-                        minLength = length;
-                        length = 1;
+                        minLength = length + 1;
+                        length = 0;
                     }
                 }
+
             }
 
             return minLength;

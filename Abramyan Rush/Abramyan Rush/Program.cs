@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            TasksPart3 part = new TasksPart3();
+            TasksPart4 part = new();
 
             part.RunTest();
         }
